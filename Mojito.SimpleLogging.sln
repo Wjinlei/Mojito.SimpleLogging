@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mojito.SimpleLogging", "Mojito.SimpleLogging\Mojito.SimpleLogging.csproj", "{4E2F6CCF-95B4-4B34-A1DE-29AA69A241C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mojito.SimpleLogging.Test", "Mojito.SimpleLogging.Test\Mojito.SimpleLogging.Test.csproj", "{54B54DD5-096F-49A8-A1C3-65C94C94D356}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E2F6CCF-95B4-4B34-A1DE-29AA69A241C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E2F6CCF-95B4-4B34-A1DE-29AA69A241C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E2F6CCF-95B4-4B34-A1DE-29AA69A241C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E2F6CCF-95B4-4B34-A1DE-29AA69A241C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54B54DD5-096F-49A8-A1C3-65C94C94D356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54B54DD5-096F-49A8-A1C3-65C94C94D356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54B54DD5-096F-49A8-A1C3-65C94C94D356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54B54DD5-096F-49A8-A1C3-65C94C94D356}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6A6DAEE-A266-4AAD-AC93-8C8B958F1081}
+	EndGlobalSection
+EndGlobal
