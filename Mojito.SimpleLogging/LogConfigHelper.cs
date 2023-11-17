@@ -1,59 +1,83 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Xml.XPath;
 
 namespace Mojito.SimpleLogging
 {
     public static class LogConfigHelper
     {
-        private static readonly IConfigurationRoot configuration;
+        private static readonly XPathNavigator xPathNavigator;
 
         static LogConfigHelper()
         {
-            configuration = new ConfigurationBuilder()
-                .AddXmlFile("App.config", optional: true, reloadOnChange: true)
-                .Build();
-        }
-
-        public static string GetLogPath()
-        {
-            return configuration["logging:target:file"] ?? "Mojito.log";
+            xPathNavigator = new XPathDocument("App.config").CreateNavigator();
         }
 
         public static string GetLogTarget()
         {
-            var target = configuration["logging:target:value"] ?? "Console";
-            return target.ToLower();
+            var target = GetTarget();
+            return target.MoveToAttribute("value", "")
+                ? target.Value.ToLower() : "console";
         }
 
-        public static string GetLogLevel()
+        public static string GetLogPath()
         {
-            var level = configuration["logging:level:value"] ?? "Debug";
-            return level.ToLower();
-        }
-
-        public static string GetLogPattern()
-        {
-            return configuration["logging:pattern:value"] ?? "%date [%level] %message%newline";
+            var target = GetTarget();
+            return target.MoveToAttribute("file", "")
+                ? target.Value : "Mojito.log";
         }
 
         public static int GetMaxRollBackups()
         {
-            return GetInt("logging:target:maxRollBackups");
-        }
-
-        public static int GetMaxRollSizeInKB()
-        {
-            return GetInt("logging:target:rollSizeInKb");
+            var target = GetTarget();
+            return target.MoveToAttribute("maxRollBackups", "")
+                ? ParseInt(target.Value) : 0;
         }
 
         public static int GetRollTimeInMinutes()
         {
-            return GetInt("logging:target:rollTimeInMinutes");
+            var target = GetTarget();
+            return target.MoveToAttribute("rollTimeInMinutes", "")
+                ? ParseInt(target.Value) : 0;
         }
 
-        private static int GetInt(string key)
+        public static int GetMaxRollSizeInKB()
         {
-            var str = configuration[key] ?? "0";
-            _ = int.TryParse(str, out int result);
+            var target = GetTarget();
+            return target.MoveToAttribute("rollSizeInKb", "")
+                ? ParseInt(target.Value) : 0;
+        }
+
+        public static string GetLogLevel()
+        {
+            var level = GetLevel();
+            return level.MoveToAttribute("value", "")
+               ? level.Value.ToLower() : "debug";
+        }
+
+        public static string GetLogPattern()
+        {
+            var pattern = GetPattern();
+            return pattern.MoveToAttribute("value", "")
+                ? pattern.Value.ToLower() : "%date [%level] %message%newline";
+        }
+
+        private static XPathNavigator GetTarget()
+        {
+            return xPathNavigator.SelectSingleNode("/configuration/logging/target");
+        }
+
+        private static XPathNavigator GetPattern()
+        {
+            return xPathNavigator.SelectSingleNode("/configuration/logging/pattern");
+        }
+
+        private static XPathNavigator GetLevel()
+        {
+            return xPathNavigator.SelectSingleNode("/configuration/logging/level");
+        }
+
+        private static int ParseInt(string key)
+        {
+            _ = int.TryParse(key, out int result);
             return result;
         }
     }
