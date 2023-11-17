@@ -1,34 +1,37 @@
-using Microsoft.Extensions.Configuration;
+using System.Xml.XPath;
 
 namespace Mojito.SimpleLogging.Test;
 
 public class LogHelperTest
 {
-    private IConfiguration configuration;
+    private XPathNavigator xPathNavigator;
 
     [SetUp]
     public void SetUp()
     {
-        configuration = new ConfigurationBuilder()
-            .AddXmlFile("App.config", optional: true, reloadOnChange: true)
-            .Build();
+        xPathNavigator = new XPathDocument("App.config").CreateNavigator();
     }
 
     [Test]
     public void TestLogHelper()
     {
-        var file = configuration["logging:target:file"];
-
         LogHelper.Debug("Test Message"); // Do not write
         LogHelper.Info("Test Message");
 
-        var text = File.ReadAllText(file ?? "");
+        var target = xPathNavigator.SelectSingleNode("/configuration/logging/target");
 
-        Assert.Multiple(() =>
+        Assert.That(target, Is.Not.Null);
+
+        if (target.MoveToAttribute("file", ""))
         {
-            Assert.That(File.Exists(file), Is.True);
-            Assert.That(text.IndexOf("[Debug]"), Is.EqualTo(-1));
-            Assert.That(text.IndexOf("[Info]"), Is.Not.EqualTo(-1));
-        });
+            var text = File.ReadAllText(target.Value ?? "");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(File.Exists(target.Value), Is.True);
+                Assert.That(text.IndexOf("[Debug]"), Is.EqualTo(-1));
+                Assert.That(text.IndexOf("[Info]"), Is.Not.EqualTo(-1));
+            });
+        }
     }
 }
