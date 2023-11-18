@@ -28,7 +28,7 @@ namespace Mojito.SimpleLogging.Loggers
         /// </summary>
         private static void CheckRollBackups()
         {
-            var rollTimeInMinutes = LogConfigHelper.GetRollTimeInMinutes();
+            var maxRollTime = LogConfigHelper.GetMaxRollTime();
             var maxRollSize = LogConfigHelper.GetMaxRollSize();
             var file = new FileInfo(LogConfigHelper.GetLog());
             if (!file.Exists)
@@ -37,7 +37,7 @@ namespace Mojito.SimpleLogging.Loggers
             var fileSizeInBytes = file.Length;
             var timeDifference = DateTime.Now - file.CreationTime;
 
-            if ((rollTimeInMinutes > 0 && timeDifference.TotalMinutes >= rollTimeInMinutes) ||
+            if ((maxRollTime > 0 && timeDifference.TotalSeconds >= maxRollTime) ||
                 (maxRollSize > 0 && fileSizeInBytes >= maxRollSize))
             {
                 RollBackups();

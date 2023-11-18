@@ -41,9 +41,12 @@ namespace Mojito.SimpleLogging
             return configuration.Get(target, "maxRollBackups")?.ToInt() ?? 0;
         }
 
-        internal static int GetRollTimeInMinutes()
+        internal static long GetMaxRollTime()
         {
-            return configuration.Get(target, "rollTimeInMinutes")?.ToInt() ?? 0;
+            var strMaxRollTime = configuration.Get(target, "maxRollTime");
+            if (strMaxRollTime != null)
+                return LogUtil.TimeUnitConvert(strMaxRollTime);
+            return 0;
         }
 
         internal static long GetMaxRollSize()

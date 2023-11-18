@@ -16,7 +16,7 @@ App.config
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <logging>
-    <target value="file" file="log/Mojito.log" maxRollBackups="10" rollTimeInMinutes="1440" />
+    <target value="file" file="log/Mojito.log" maxRollBackups="10" maxRollTime="1d" />
     <level value="Debug" />
     <pattern value="%date [%level] %message%newline" />
   </logging>
@@ -30,7 +30,7 @@ App.config
 - `file` // Log path
 - `maxRollBackups="10"` // The maximum retention is 10 copies  
 - `maxRollSize="512kb"` // The log is larger than or equal to 512kb, Supported units is `b`, `kb`, `mb`, `gb`  
-- `rollTimeInMinutes="1440"` // The log is rolled every 1 day  
+- `maxRollTime="1d"` // The log is rolled every 1 day, Supported units is `s`, `m`, `h`, `d`
 
 `level`: // Log level
 - `Debug`
