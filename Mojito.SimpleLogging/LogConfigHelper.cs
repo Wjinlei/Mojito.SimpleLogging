@@ -46,9 +46,12 @@ namespace Mojito.SimpleLogging
             return configuration.Get(target, "rollTimeInMinutes")?.ToInt() ?? 0;
         }
 
-        internal static int GetMaxRollSizeInKB()
+        internal static long GetMaxRollSize()
         {
-            return configuration.Get(target, "rollSizeInKb")?.ToInt() ?? 0;
+            var strMaxRollSize = configuration.Get(target, "maxRollSize");
+            if (strMaxRollSize != null)
+                return LogUtil.SizeUnitConvert(strMaxRollSize);
+            return 0;
         }
     }
 }
