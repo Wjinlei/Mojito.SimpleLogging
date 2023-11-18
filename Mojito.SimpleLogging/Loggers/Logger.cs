@@ -6,7 +6,7 @@
 
         public virtual bool IsWriteable(LogLevel level)
         {
-            switch (LogConfigHelper.GetLogLevel())
+            switch (LogConfigHelper.GetLevel())
             {
                 case "debug":
                     return true;

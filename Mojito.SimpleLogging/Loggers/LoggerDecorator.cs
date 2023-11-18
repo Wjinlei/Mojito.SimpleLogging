@@ -33,7 +33,7 @@ namespace Mojito.SimpleLogging.Loggers
                     break;
             }
 
-            var newMessage = LogConfigHelper.GetLogPattern()
+            var newMessage = LogConfigHelper.GetPattern()
                 .Replace("%date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
                 .Replace("%level", strLevel)
                 .Replace("%message", message)

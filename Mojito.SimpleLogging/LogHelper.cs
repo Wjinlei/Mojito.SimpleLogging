@@ -18,7 +18,7 @@ namespace Mojito.SimpleLogging
         /// </summary>
         private static Logger GetLogger()
         {
-            switch (LogConfigHelper.GetLogTarget())
+            switch (LogConfigHelper.GetTarget())
             {
                 case "console":
                     return consoleLogger;
