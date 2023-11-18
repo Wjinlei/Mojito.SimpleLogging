@@ -1,6 +1,6 @@
 ﻿namespace Mojito.SimpleLogging
 {
-    public enum LogLevel
+    internal enum LogLevel
     {
         Debug,
         Info,

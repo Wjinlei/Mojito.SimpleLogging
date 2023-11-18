@@ -2,16 +2,16 @@
 
 namespace Mojito.SimpleLogging.Loggers
 {
-    public class LoggerDecorator : Logger
+    internal class LoggerDecorator : Logger
     {
         private readonly Logger logger;
 
-        public LoggerDecorator(Logger logger)
+        internal LoggerDecorator(Logger logger)
         {
             this.logger = logger;
         }
 
-        public override void Log(string message, LogLevel level)
+        internal override void Log(string message, LogLevel level)
         {
             var strLevel = "";
             switch (level)

@@ -5,11 +5,11 @@ using System.Text.RegularExpressions;
 
 namespace Mojito.SimpleLogging.Loggers
 {
-    public class FileLogger : Logger
+    internal class FileLogger : Logger
     {
         private readonly object _lock = new object();
 
-        public override void Log(string message, LogLevel level)
+        internal override void Log(string message, LogLevel level)
         {
             var logPath = LogConfigHelper.GetLog();
             if (IsWriteable(level))

@@ -1,10 +1,10 @@
 ﻿namespace Mojito.SimpleLogging.Loggers
 {
-    public abstract class Logger
+    internal abstract class Logger
     {
-        public abstract void Log(string message, LogLevel level);
+        internal abstract void Log(string message, LogLevel level);
 
-        public virtual bool IsWriteable(LogLevel level)
+        internal virtual bool IsWriteable(LogLevel level)
         {
             switch (LogConfigHelper.GetLevel())
             {

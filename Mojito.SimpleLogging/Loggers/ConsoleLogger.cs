@@ -2,9 +2,9 @@
 
 namespace Mojito.SimpleLogging.Loggers
 {
-    public class ConsoleLogger : Logger
+    internal class ConsoleLogger : Logger
     {
-        public override void Log(string message, LogLevel level)
+        internal override void Log(string message, LogLevel level)
         {
             switch (level)
             {
