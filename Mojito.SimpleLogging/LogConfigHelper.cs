@@ -16,7 +16,7 @@ namespace Mojito.SimpleLogging
             configuration = new XmlConfiguration("App.config");
         }
 
-        internal static string GetFile()
+        internal static string GetLog()
         {
             return configuration.Get(target, "file") ?? "Mojito.log";
         }

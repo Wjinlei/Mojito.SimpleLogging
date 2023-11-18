@@ -11,7 +11,7 @@ namespace Mojito.SimpleLogging.Loggers
 
         public override void Log(string message, LogLevel level)
         {
-            var logPath = LogConfigHelper.GetFile();
+            var logPath = LogConfigHelper.GetLog();
             if (IsWriteable(level))
             {
                 lock (_lock)
@@ -30,7 +30,7 @@ namespace Mojito.SimpleLogging.Loggers
         {
             var rollTimeInMinutes = LogConfigHelper.GetRollTimeInMinutes();
             var maxRollSizeInKB = LogConfigHelper.GetMaxRollSizeInKB();
-            var file = new FileInfo(LogConfigHelper.GetFile());
+            var file = new FileInfo(LogConfigHelper.GetLog());
             if (!file.Exists)
                 return;
 
@@ -52,7 +52,7 @@ namespace Mojito.SimpleLogging.Loggers
         {
             var now = DateTime.Now;
             var strNow = $"{now:yyyy-MM-dd_HH-mm-ss}";
-            var logPath = LogConfigHelper.GetFile();
+            var logPath = LogConfigHelper.GetLog();
             var maxRollBackups = LogConfigHelper.GetMaxRollBackups();
             try
             {
@@ -76,7 +76,7 @@ namespace Mojito.SimpleLogging.Loggers
         /// <param name="maxRollBackups">最大日志数量</param>
         private static void DeleteOldRollBackups(int maxRollBackups)
         {
-            var logPath = LogConfigHelper.GetFile();
+            var logPath = LogConfigHelper.GetLog();
 
             var fileName = Path.GetFileName(logPath);
             if (string.IsNullOrWhiteSpace(fileName))
