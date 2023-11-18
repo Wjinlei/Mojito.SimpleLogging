@@ -28,9 +28,9 @@ App.config
 
 `target`: // Logger target `Console` | `file` 
 - `file` // Log path
-- `rollSizeInKb="512"` // The log is larger than or equal to 512kb  
-- `rollTimeInMinutes="1440"` // The log is rolled every 1 day  
 - `maxRollBackups="10"` // The maximum retention is 10 copies  
+- `maxRollSize="512kb"` // The log is larger than or equal to 512kb, Supported units is `b`, `kb`, `mb`, `gb`  
+- `rollTimeInMinutes="1440"` // The log is rolled every 1 day  
 
 `level`: // Log level
 - `Debug`
