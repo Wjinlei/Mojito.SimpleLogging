@@ -1,11 +1,13 @@
 ﻿## Usage:
 
 ```csharp
-LogHelper.Debug("Hello World");
-LogHelper.Info("Hello World");
-LogHelper.Warn("Hello World");
-LogHelper.Error("Hello World");
-LogHelper.Fatal("Hello World");
+var logger = LogHelper.GetLogger(typeof(YourClass));
+
+logger.Debug("Hello World");
+logger.Info("Hello World");
+logger.Warn("Hello World");
+logger.Error("Hello World");
+logger.Fatal("Hello World");
 ```
 
 ## Config
@@ -18,7 +20,7 @@ App.config
   <logging>
     <target value="file" file="log/Mojito.log" maxRollBackups="10" maxRollTime="1d" />
     <level value="Debug" />
-    <pattern value="%date [%level] %message%newline" />
+    <pattern value="%date [%thread] %level %logger :: %message%newline" />
   </logging>
 </configuration>
 ```
@@ -42,5 +44,7 @@ App.config
 `pattern` // Log pattern
 - `%date` // Date time format is `yyyy-MM-dd HH:mm:ss`
 - `%level` // Log level
+- `%thread` // Thread name and Thread ID
+- `%logger` // Caller class name
 - `%message` // Your message
 - `%newline` // Environment.NewLine
