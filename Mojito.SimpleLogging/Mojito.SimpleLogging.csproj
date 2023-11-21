@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Title>A very simple logging library</Title>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>freebufer.wang@gmail.com</Authors>
     <Description>A very simple logging library</Description>
     <RepositoryUrl>https://github.com/Wjinlei/Mojito.SimpleLogging</RepositoryUrl>

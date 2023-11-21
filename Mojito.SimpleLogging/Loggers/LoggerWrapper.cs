@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace Mojito.SimpleLogging.Loggers
@@ -36,11 +37,17 @@ namespace Mojito.SimpleLogging.Loggers
                     break;
             }
 
+            var stackTrace = new StackTrace(true);
+            var stackFrame = stackTrace.GetFrame(2);
+
             var newMessage = LogConfigHelper.GetPattern()
                 .Replace("%date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
                 .Replace("%level", strLevel)
                 .Replace("%thread", $"{Thread.CurrentThread.Name ?? "Unnamed"}: {Thread.CurrentThread.ManagedThreadId}")
                 .Replace("%logger", $"{loggerType}")
+                .Replace("%stack", $"{Environment.NewLine}{stackTrace}")
+                .Replace("%file", $"{stackFrame?.GetFileName()}")
+                .Replace("%line", $"{stackFrame?.GetFileLineNumber()}")
                 .Replace("%message", message)
                 .Replace("%newline", Environment.NewLine);
 
