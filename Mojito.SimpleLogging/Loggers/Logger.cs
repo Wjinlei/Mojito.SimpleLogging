@@ -1,6 +1,6 @@
 ﻿namespace Mojito.SimpleLogging.Loggers
 {
-    internal abstract class Logger
+    public abstract class Logger
     {
         internal abstract void Log(string message, LogLevel level);
 
