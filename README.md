@@ -25,10 +25,10 @@ App.config
 </configuration>
 ```
 
-Debug Recommended pattern
+Print stack
 
 ```xml
-<pattern value="%date [%thread] %level %logger - %message%newline (%file: %line) %stack" />
+<pattern value="%date [%thread] %level %logger - %message%newline %stack" />
 ```
 
 
@@ -52,8 +52,6 @@ Debug Recommended pattern
 - `%level` // Log level
 - `%thread` // Thread name and Thread ID
 - `%logger` // Caller class name
-- `%file` // Caller file
-- `%line` // Caller line number
 - `%stack` // Stack Trace
 - `%message` // Your message
 - `%newline` // Environment.NewLine
