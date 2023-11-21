@@ -17,7 +17,7 @@ public class LogHelperTest
     {
         LogHelper.Debug("Test Message"); // Do not write
         LogHelper.Info("Test Message");
-
+     
         var target = xPathNavigator.SelectSingleNode("/configuration/logging/target");
 
         Assert.That(target, Is.Not.Null);
@@ -29,8 +29,8 @@ public class LogHelperTest
             Assert.Multiple(() =>
             {
                 Assert.That(File.Exists(target.Value), Is.True);
-                Assert.That(text.IndexOf("[Debug]"), Is.EqualTo(-1));
-                Assert.That(text.IndexOf("[Info]"), Is.Not.EqualTo(-1));
+                Assert.That(text.IndexOf("Debug"), Is.EqualTo(-1));
+                Assert.That(text.IndexOf("Info"), Is.Not.EqualTo(-1));
             });
         }
     }

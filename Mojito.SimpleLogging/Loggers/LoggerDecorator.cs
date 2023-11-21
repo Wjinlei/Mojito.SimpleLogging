@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Mojito.SimpleLogging.Loggers
 {
@@ -36,6 +37,7 @@ namespace Mojito.SimpleLogging.Loggers
             var newMessage = LogConfigHelper.GetPattern()
                 .Replace("%date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
                 .Replace("%level", strLevel)
+                .Replace("%thread", $"{Thread.CurrentThread.Name ?? "Unnamed"}: {Thread.CurrentThread.ManagedThreadId}")
                 .Replace("%message", message)
                 .Replace("%newline", Environment.NewLine);
 
