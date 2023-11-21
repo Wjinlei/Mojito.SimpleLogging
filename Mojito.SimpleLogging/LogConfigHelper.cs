@@ -33,7 +33,7 @@ namespace Mojito.SimpleLogging
 
         internal static string GetPattern()
         {
-            return configuration.Get(pattern, "value")?.ToLower() ?? "%date [%level] %message%newline";
+            return configuration.Get(pattern, "value")?.ToLower() ?? "%date [%thread] %level %logger - %message%newline";
         }
 
         internal static int GetMaxRollBackups()

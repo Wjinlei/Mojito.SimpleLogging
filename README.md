@@ -18,11 +18,17 @@ App.config
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <logging>
-    <target value="file" file="log/Mojito.log" maxRollBackups="10" maxRollTime="1d" />
-    <level value="Debug" />
-    <pattern value="%date [%thread] %level %logger :: %message%newline" />
+    <target value="file" file="log/Mojito.log" maxRollBackups="30" maxRollTime="1d" />
+    <level value="Info" />
+    <pattern value="%date [%thread] %level %logger - %message%newline" />
   </logging>
 </configuration>
+```
+
+Debug Recommended pattern
+
+```xml
+<pattern value="%date [%thread] %level %logger - %message%newline (%file: %line) %stack" />
 ```
 
 
@@ -46,5 +52,8 @@ App.config
 - `%level` // Log level
 - `%thread` // Thread name and Thread ID
 - `%logger` // Caller class name
+- `%file` // Caller file
+- `%line` // Caller line number
+- `%stack` // Stack Trace
 - `%message` // Your message
 - `%newline` // Environment.NewLine
