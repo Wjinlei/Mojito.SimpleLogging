@@ -10,6 +10,7 @@ namespace Mojito.SimpleLogging
         private static readonly string target = "/configuration/logging/target";
         private static readonly string level = "/configuration/logging/level";
         private static readonly string pattern = "/configuration/logging/pattern";
+        private static readonly string dateFormat = "/configuration/logging/dateFormat";
 
         static LogConfigHelper()
         {
@@ -29,6 +30,11 @@ namespace Mojito.SimpleLogging
         internal static string GetLevel()
         {
             return configuration.Get(level, "value")?.ToLower() ?? "debug";
+        }
+
+        internal static string GetDateFormat()
+        {
+            return configuration.Get(dateFormat, "value") ?? "yyyy-MM-dd HH:mm:ss";
         }
 
         internal static string GetPattern()

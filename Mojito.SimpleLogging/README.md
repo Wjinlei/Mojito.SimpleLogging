@@ -48,7 +48,7 @@ Print stack
 - `Fatal`
 
 `pattern` // Log pattern
-- `%date` // Date time format is `yyyy-MM-dd HH:mm:ss`
+- `%date` // Date time default format is `yyyy-MM-dd HH:mm:ss`
 - `%level` // Log level
 - `%thread` // Thread name and Thread ID
 - `%logger` // Caller class name

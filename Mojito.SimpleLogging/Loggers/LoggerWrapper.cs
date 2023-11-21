@@ -38,7 +38,7 @@ namespace Mojito.SimpleLogging.Loggers
             }
 
             var newMessage = LogConfigHelper.GetPattern()
-                .Replace("%date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+                .Replace("%date", DateTime.Now.ToString(LogConfigHelper.GetDateFormat())) // FormatException
                 .Replace("%level", strLevel)
                 .Replace("%thread", $"{Thread.CurrentThread.Name ?? "Unnamed"}: {Thread.CurrentThread.ManagedThreadId}")
                 .Replace("%logger", $"{loggerType}")
