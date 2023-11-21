@@ -15,7 +15,7 @@ public class LogHelperTest
     [Test]
     public void TestLogHelper()
     {
-        var logger = LogHelper.GetLogger(typeof(LogHelperTest));
+        var logger = LogManager.GetLogger(typeof(LogHelperTest));
 
         logger.Debug("Test Debug message"); // Do not write
         logger.Info("Test Info message");

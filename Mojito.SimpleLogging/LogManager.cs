@@ -2,7 +2,7 @@
 
 namespace Mojito.SimpleLogging
 {
-    public static class LogHelper
+    public static class LogManager
     {
         /// <summary>
         /// 获得日志记录器

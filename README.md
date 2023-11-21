@@ -1,7 +1,7 @@
 ﻿## Usage:
 
 ```csharp
-var logger = LogHelper.GetLogger(typeof(YourClass));
+var logger = LogManager.GetLogger(typeof(YourClass));
 
 logger.Debug("Hello World");
 logger.Info("Hello World");
