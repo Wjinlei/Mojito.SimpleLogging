@@ -2,7 +2,7 @@ using System.Xml.XPath;
 
 namespace Mojito.SimpleLogging.Test;
 
-public class LogHelperTest
+public class LogManagerTest
 {
     private XPathNavigator xPathNavigator;
 
@@ -13,9 +13,9 @@ public class LogHelperTest
     }
 
     [Test]
-    public void TestLogHelper()
+    public void TestLogManager()
     {
-        var logger = LogManager.GetLogger(typeof(LogHelperTest));
+        var logger = LogManager.GetLogger(typeof(LogManagerTest));
 
         logger.Debug("Test Debug message"); // Do not write
         logger.Info("Test Info message");
