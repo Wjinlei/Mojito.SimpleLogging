@@ -17,29 +17,9 @@ namespace Mojito.SimpleLogging.Loggers
 
         internal override void Log(string message, LogLevel level)
         {
-            var strLevel = "";
-            switch (level)
-            {
-                case LogLevel.Debug:
-                    strLevel = "DEBUG";
-                    break;
-                case LogLevel.Info:
-                    strLevel = "INFO";
-                    break;
-                case LogLevel.Warn:
-                    strLevel = "WARN";
-                    break;
-                case LogLevel.Error:
-                    strLevel = "ERROR";
-                    break;
-                case LogLevel.Fatal:
-                    strLevel = "FATAL";
-                    break;
-            }
-
             var newMessage = LogConfigHelper.GetPattern()
                 .Replace("%date", DateTime.Now.ToString(LogConfigHelper.GetDateFormat())) // FormatException
-                .Replace("%level", strLevel)
+                .Replace("%level", level.ToString().ToUpper())
                 .Replace("%thread", $"{Thread.CurrentThread.Name ?? "Unnamed"}: {Thread.CurrentThread.ManagedThreadId}")
                 .Replace("%logger", $"{loggerType}")
                 .Replace("%stack", $"{new StackTrace(true)}")
